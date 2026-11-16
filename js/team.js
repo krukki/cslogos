@@ -7,7 +7,7 @@
   var root = document.getElementById('team-root');
   if (!root) return;
 
-  var slug = new URLSearchParams(window.location.search).get('t') || '';
+  var slug = (new URLSearchParams(window.location.search).get('t') || '').trim().toLowerCase();
   var team = CS.findTeam(slug);
 
   function setMeta(title, description) {
@@ -151,7 +151,11 @@
   var box = root.querySelector('.compare');
   if (box) {
     var range = box.querySelector('.compare-range');
-    var update = function () { box.style.setProperty('--pos', range.value + '%'); };
+    var update = function () {
+      box.style.setProperty('--pos', range.value + '%');
+      range.setAttribute('aria-valuetext', range.value + '% mostrando a logo de ' + first.years + ', ' +
+        (100 - range.value) + '% mostrando a de ' + last.years);
+    };
     range.addEventListener('input', update);
     update();
   }

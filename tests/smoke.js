@@ -75,6 +75,10 @@ async function noHorizontalScroll(page) {
     check((await page.$$('.team-card:visible')).length === 1, 'busca "navi" → 1 card');
     await page.fill('#team-search', 'virtuspro');
     check((await page.$$('.team-card:visible')).length === 1, 'busca "virtuspro" acha Virtus.pro');
+    await page.fill('#team-search', 'vp');
+    check((await page.$$('.team-card:visible')).length === 1, 'busca pelo apelido "vp"');
+    await page.fill('#team-search', 'ngal');
+    check((await page.$$('.team-card:visible')).length === 0, 'busca não junta campos ("ngal" não acha SK)');
     await page.fill('#team-search', 'FÚRIA');
     check((await page.$$('.team-card:visible')).length === 1, 'busca com acento/maiúscula "FÚRIA"');
     await page.fill('#team-search', 'zzzz');
@@ -131,6 +135,11 @@ async function noHorizontalScroll(page) {
   }
 
   // ---------- slug inválido ----------
+  {
+    const { page, errors } = await openPage(browser, 'team.html?t=%20NAVI%20');
+    check((await page.textContent('h1')).trim() === 'Natus Vincere' && errors.length === 0, 'slug com maiúsculas/espaços funciona');
+    await page.close();
+  }
   for (const q of ['team.html?t=nao-existe', 'team.html']) {
     const { page, errors } = await openPage(browser, q);
     check((await page.textContent('h1')).includes('Time não encontrado') && errors.length === 0, `${q}: mostra "Time não encontrado"`);
@@ -162,8 +171,21 @@ async function noHorizontalScroll(page) {
     check(/\d+\/10/.test(await page.textContent('.quiz-score')), 'placar final X/10');
     check(await page.isVisible('.quiz-restart'), 'botão jogar de novo');
     await page.click('.quiz-restart');
-    check((await page.textContent('.quiz-hud')).includes('1'), 'reinicia na rodada 1');
+    check((await page.textContent('.quiz-hud strong')).trim() === '1', 'reinicia na rodada 1');
     check(errors.length === 0, 'quiz sem erros ' + errors.join(' | '));
+    await page.close();
+  }
+
+  // ---------- quiz com imagem quebrada ----------
+  {
+    const page = await browser.newPage();
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    await page.route(/\.webp$/, (route) => route.abort());
+    await page.goto(url('quiz.html'));
+    await page.click('.quiz-option >> nth=0');
+    await page.click('.quiz-next');
+    check((await page.$$('.quiz-option')).length === 4 && errors.length === 0, 'quiz segue funcionando sem imagens');
     await page.close();
   }
 

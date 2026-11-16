@@ -11,9 +11,12 @@
   if (!grid) return;
 
   var activeRegion = 'all';
+  var live = document.getElementById('result-live');
+  var announceTimer;
 
+  /** Cada campo normalizado separadamente, para a busca não "colar" o fim de um no começo de outro. */
   function haystack(team) {
-    return CS.norm([team.name, team.fullName, team.country].concat(team.aliases || []).join(' '));
+    return [team.name, team.fullName, team.country].concat(team.aliases || []).map(CS.norm);
   }
 
   function cardHTML(team) {
@@ -37,12 +40,17 @@
     var shown = 0;
     cards.forEach(function (card, i) {
       var t = index[i];
-      var ok = (activeRegion === 'all' || t.region === activeRegion) && (!q || t.text.indexOf(q) !== -1);
+      var ok = (activeRegion === 'all' || t.region === activeRegion) &&
+        (!q || t.text.some(function (field) { return field.indexOf(q) !== -1; }));
       card.hidden = !ok;
       card.style.display = ok ? '' : 'none';
       if (ok) shown++;
     });
-    if (count) count.textContent = shown + (shown === 1 ? ' time' : ' times');
+    var label = shown + (shown === 1 ? ' time' : ' times');
+    if (count) count.textContent = label;
+    // anuncia para leitores de tela só quando a digitação pausa
+    clearTimeout(announceTimer);
+    announceTimer = setTimeout(function () { if (live) live.textContent = label + (shown === 1 ? ' encontrado' : ' encontrados'); }, 600);
     if (empty) empty.hidden = shown !== 0;
   }
 

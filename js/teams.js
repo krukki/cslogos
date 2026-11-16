@@ -262,7 +262,7 @@ window.TEAMS = [
   },
   {
     slug: 'nip',
-    name: 'NIP',
+    name: 'NiP',
     fullName: 'Ninjas in Pyjamas',
     aliases: ['ninjas in pyjamas', 'nip'],
     founded: 2000,

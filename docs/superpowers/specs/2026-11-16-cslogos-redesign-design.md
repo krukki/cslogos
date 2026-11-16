@@ -128,6 +128,12 @@ Se for recusado, uso espaços reservados ("logo em breve" com o nome do arquivo 
 6. Times novos (pesquisa + logos).
 7. SEO/README. Revisão (`superpowers:requesting-code-review`) e push.
 
+## Decisões tomadas na implementação
+- Navbar e rodapé ficaram em HTML estático nas 4 páginas (index, team, quiz, 404), em vez de gerados por
+  `common.js`: funcionam sem JS e não "piscam" ao carregar.
+- A região "CEI" virou "Leste Europeu" (inclui a NAVI, ucraniana, e é um termo mais neutro).
+- Logos vieram da Liquipedia (variantes "darkmode"), já que o fundo do site é escuro.
+
 ## Verificação
 - Script Playwright (no scratchpad): abre `index.html`, cada `team.html?t=<slug>` (16), `quiz.html`, `404.html`
   e os 8 `pages/*.html`; falha se houver erro no console, imagem com `naturalWidth === 0` ou redirecionamento quebrado.
