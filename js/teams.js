@@ -16,6 +16,35 @@
    As logos ficam em ordem cronológica (a última é a atual).
    ========================================================== */
 window.TEAMS = [
+{
+    slug: '3dmax',
+    name: '3DMAX',
+    fullName: '3DMAX',
+    aliases: ['3d max'],
+    founded: 2009,
+    country: 'França',
+    region: 'Europa',
+    colors: [
+      { name: 'Vermelho', hex: '#E00810' },
+      { name: 'Branco', hex: '#FFFFFF' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [
+      { year: 2025, name: 'Vice-campeã do CS Asia Championship' }
+    ],
+    history: 'Organização francesa criada no fim dos anos 2000, a 3DMAX passou por várias formações, chegou a sumir do cenário e voltou ao Counter-Strike na era CS2, em 2023, com um elenco francês que se tornou presença constante nos Majors.',
+    logoDesign: 'Por muito tempo o símbolo foi um diabinho vermelho de chifres, em estilo de mascote. No retorno de 2023 ele virou uma máscara oni japonesa em branco e, em 2024, foi reduzido a um par de chifres vermelhos estilizados, bem mais simples.',
+    logos: [
+      { years: 'até 2011', src: 'assets/3dmax-2008.webp', w: 197, h: 230,
+        caption: 'O primeiro mascote: um diabinho vermelho dentro de um escudo com o nome 3DMAX.' },
+      { years: '2011–2023', src: 'assets/3dmax-2011.webp', w: 464, h: 640,
+        caption: 'O diabinho com fone de headset e garras, sobre um escudo vermelho e preto.' },
+      { years: '2023–2024', src: 'assets/3dmax-2023.webp', w: 640, h: 580,
+        caption: 'Uma máscara oni japonesa em branco, adotada no retorno ao CS.' },
+      { years: '2024–atual', src: 'assets/3dmax-2024.webp', w: 466, h: 640,
+        caption: 'Os chifres reduzidos a uma forma vermelha minimalista.' }
+    ]
+  },
   {
     slug: 'astralis',
     name: 'Astralis',
@@ -43,6 +72,28 @@ window.TEAMS = [
         caption: 'A primeira e única logo da Astralis. O formato nunca mudou desde a fundação; apenas o tom de vermelho é ajustado de tempos em tempos.' }
     ]
   },
+{
+    slug: 'big',
+    name: 'BIG',
+    fullName: 'BIG',
+    aliases: ['berlin international gaming'],
+    founded: 2017,
+    country: 'Alemanha',
+    region: 'Europa',
+    colors: [
+      { name: 'Preto', hex: '#000000' },
+      { name: 'Branco', hex: '#FFFFFF' }
+    ],
+    titles: [
+      { year: 2017, name: 'Quartas de final do Major de Cracóvia' }
+    ],
+    history: 'A Berlin International Gaming foi fundada em janeiro de 2017 por Daniel Finkler e Nikolaus “LEGIJA” Jubin, com o objetivo de montar um time alemão de ponta no Counter-Strike. Logo no primeiro ano chegou às quartas de final do Major de Cracóvia, e em 2020 viveu sua melhor temporada, quando chegou a figurar entre os melhores times do mundo.',
+    logoDesign: 'A logo é a pegada de um urso, com as letras “BIG” dentro da almofada da pata. O urso é o símbolo de Berlim, a cidade da organização, e o traço grosso em preto e branco funciona bem em qualquer fundo.',
+    logos: [
+      { years: '2017–atual', src: 'assets/big-2017.webp', w: 446, h: 640,
+        caption: 'A pata de urso com as letras BIG, símbolo de Berlim, redesenhada com traços mais firmes em 2020.' }
+    ]
+  },
   {
     slug: 'cloud9',
     name: 'Cloud9',
@@ -66,6 +117,87 @@ window.TEAMS = [
         caption: 'A nuvem em degradê azul que acompanhou a Cloud9 no título do Major de Boston 2018.' },
       { years: '2023–atual', src: 'assets/cloud9-2023.webp', w: 640, h: 441,
         caption: 'A mesma nuvem em azul sólido, sem degradê.' }
+    ]
+  },
+{
+    slug: 'complexity',
+    name: 'Complexity',
+    fullName: 'Complexity Gaming',
+    aliases: ['col', 'complexity gaming'],
+    founded: 2003,
+    country: 'Estados Unidos',
+    region: 'Américas',
+    colors: [
+      { name: 'Vermelho', hex: '#D82028' },
+      { name: 'Cinza', hex: '#D0D0D0' },
+      { name: 'Azul-marinho', hex: '#0B1F3A' }
+    ],
+    titles: [
+      { year: 2006, name: 'CPL Summer (CS 1.6)' },
+      { year: 2005, name: 'ESWC (CS 1.6)' }
+    ],
+    history: 'Fundada em 2003 por Jason Lake, a Complexity foi uma das organizações mais tradicionais da América do Norte: venceu a ESWC 2005 e a CPL Summer 2006 no CS 1.6 e voltou ao CS:GO em 2013 com um elenco lendário. Em 2017 passou a ter como sócio o dono do Dallas Cowboys. Depois de 23 anos, a organização encerrou as atividades em setembro de 2026.',
+    logoDesign: 'A logo clássica era um “C” formado por dois arcos, em vermelho e cinza, que lembram uma órbita. Em 2019, já ligada ao Dallas Cowboys, a Complexity adotou uma estrela de cinco pontas inspirada na do time de futebol americano.',
+    logos: [
+      { years: 'até 2019', src: 'assets/complexity-classic.webp', w: 640, h: 380,
+        caption: 'O “C” em dois arcos, vermelho e cinza, da era do CS 1.6 e do início do CS:GO.' },
+      { years: '2019–2026', src: 'assets/complexity-2019.webp', w: 640, h: 609,
+        caption: 'A estrela branca inspirada no Dallas Cowboys, usada até o fim da organização.' }
+    ]
+  },
+{
+    slug: 'ence',
+    name: 'ENCE',
+    fullName: 'ENCE',
+    aliases: ['ence esports', 'ez4ence'],
+    founded: 2013,
+    country: 'Finlândia',
+    region: 'Europa',
+    colors: [
+      { name: 'Laranja', hex: '#F89848' },
+      { name: 'Amarelo-ouro', hex: '#F8B040' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [
+      { year: 2022, name: 'Semifinal do Major de Antuérpia' },
+      { year: 2019, name: 'Vice-campeã do Major IEM Katowice' },
+      { year: 2019, name: 'BLAST Pro Series Madri' },
+      { year: 2018, name: 'DreamHack Open Winter' }
+    ],
+    history: 'Fundada em abril de 2013 para profissionalizar os esports na Finlândia, a ENCE virou febre em 2019: com o hino “EZ4ENCE” cantado pela torcida, o time finlandês chegou à final do Major IEM Katowice e só parou na Astralis. Voltou a uma semifinal de Major em Antuérpia 2022 e segue como a organização mais popular do país.',
+    logoDesign: 'O emblema é redondo, com um personagem encapuzado cujo rosto forma o símbolo do infinito. A versão antiga trazia o lema “Ever to Excel” escrito em volta; em 2020 o texto saiu e o desenho ficou mais limpo, em laranja e preto.',
+    logos: [
+      { years: '2013–2020', src: 'assets/ence-2013.webp', w: 640, h: 639,
+        caption: 'O brasão circular com o lema “Ever to Excel” — a logo da final do Major de Katowice.' },
+      { years: '2020–atual', src: 'assets/ence-2020.webp', w: 640, h: 640,
+        caption: 'O personagem redesenhado em laranja e preto, sem o texto em volta.' }
+    ]
+  },
+{
+    slug: 'eternalfire',
+    name: 'Eternal Fire',
+    fullName: 'Eternal Fire',
+    aliases: ['ef', 'eternal fire'],
+    founded: 2021,
+    country: 'Turquia',
+    region: 'Europa',
+    colors: [
+      { name: 'Azul', hex: '#20A8E0' },
+      { name: 'Dourado', hex: '#988868' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [
+      { year: 2024, name: 'Quartas de final do Major de Copenhague' }
+    ],
+    history: 'Criada em agosto de 2021 pelos próprios jogadores turcos XANTARES e woxic, a Eternal Fire reuniu a geração mais forte da Turquia. Estreou em Majors em Antuérpia 2022 e teve sua melhor campanha em Copenhague 2024, quando chegou às quartas de final. Em abril de 2025, por problemas de patrocínio, vendeu o elenco de Counter-Strike para a Aurora, mas a organização segue ativa em outros jogos.',
+    logoDesign: 'O símbolo é um dragão cujo corpo desenha o sinal de infinito — o “eterno” do nome. A primeira versão tinha degradê azul e muitos detalhes; em 2022 o dragão ficou em azul chapado e, em 2023, ganhou um tom dourado mais sóbrio.',
+    logos: [
+      { years: '2021–2022', src: 'assets/eternalfire-2021.webp', w: 640, h: 340,
+        caption: 'O dragão-infinito em degradê azul, da fundação.' },
+      { years: '2022–2023', src: 'assets/eternalfire-2022.webp', w: 640, h: 340,
+        caption: 'O mesmo desenho em azul chapado, sem degradê.' },
+      { years: '2023–atual', src: 'assets/eternalfire-2023.webp', w: 640, h: 340,
+        caption: 'A versão dourada do dragão-infinito.' }
     ]
   },
   {
@@ -230,6 +362,30 @@ window.TEAMS = [
         caption: 'Uma versão ainda mais simples, com blocos sólidos em dois tons de verde.' }
     ]
   },
+{
+    slug: 'legacy',
+    name: 'Legacy',
+    fullName: 'Legacy',
+    aliases: ['legacy br'],
+    founded: 2023,
+    country: 'Brasil',
+    region: 'Brasil',
+    colors: [
+      { name: 'Amarelo', hex: '#F8C000' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [
+      { year: 2026, name: 'CS Asia Championship' },
+      { year: 2026, name: '3º lugar na Esports World Cup' },
+      { year: 2025, name: 'CS Asia Championship' }
+    ],
+    history: 'Time brasileiro que estreou em setembro de 2023, a Legacy chegou ao primeiro Major já em 2024, em Copenhague. No Major de Austin 2025, entrou como substituta de última hora e venceu a Vitality, encerrando uma sequência histórica de vitórias da equipe francesa. Desde então conquistou o CS Asia Championship duas vezes seguidas e ficou em 3º lugar na Esports World Cup 2026.',
+    logoDesign: 'A logo é um nó amarelo de linhas entrelaçadas que lembra uma flor de lótus, apontando para baixo como um escudo. O traçado contínuo, sem começo nem fim, conversa com o nome: um legado que passa adiante.',
+    logos: [
+      { years: '2023–atual', src: 'assets/legacy-2023.webp', w: 633, h: 640,
+        caption: 'O nó amarelo em forma de flor de lótus, usada desde a estreia do time.' }
+    ]
+  },
   {
     slug: 'liquid',
     name: 'Liquid',
@@ -376,6 +532,29 @@ window.TEAMS = [
         caption: 'A versão modernizada do shuriken, incorporando o caractere japonês “nin” e a nova paleta em amarelo neon.' }
     ]
   },
+{
+    slug: 'pain',
+    name: 'paiN',
+    fullName: 'paiN Gaming',
+    aliases: ['pain gaming'],
+    founded: 2010,
+    country: 'Brasil',
+    region: 'Brasil',
+    colors: [
+      { name: 'Vermelho', hex: '#F80000' },
+      { name: 'Branco', hex: '#FFFFFF' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [],
+    history: 'Fundada em março de 2010, em São Paulo, por Arthur “PAADA” Zarzur, a paiN Gaming é uma das organizações mais antigas e populares do Brasil. Começou em outros jogos e se firmou no Counter-Strike como presença frequente no circuito internacional, disputando Majors como o BLAST.tv Paris 2023 e o Perfect World Xangai 2024.',
+    logoDesign: 'A primeira identidade era um letreiro “paiN GAMING” com traços de velocidade, no estilo dos clãs dos anos 2000. Em 2017 a marca foi reduzida a um “P” branco, geométrico e inclinado, com um triângulo vermelho que funciona como seta — mais fácil de reconhecer em uniformes e stickers. Em 2023 o desenho recebeu pequenos ajustes de proporção.',
+    logos: [
+      { years: '2010–2017', src: 'assets/pain-2010.webp', w: 640, h: 206,
+        caption: 'O letreiro original “paiN GAMING”, com linhas de velocidade saindo do nome.' },
+      { years: '2017–atual', src: 'assets/pain-2017.webp', w: 640, h: 425,
+        caption: 'O “P” branco e geométrico com o triângulo vermelho, ajustado em 2023.' }
+    ]
+  },
   {
     slug: 'sk',
     name: 'SK Gaming',
@@ -450,6 +629,29 @@ window.TEAMS = [
     logos: [
       { years: '2023–atual', src: 'assets/mongolz-2023.webp', w: 496, h: 640,
         caption: 'O guerreiro mongol dourado dentro de um círculo, logo da equipe que chegou à final do Major de Austin.' }
+    ]
+  },
+{
+    slug: 'tsm',
+    name: 'TSM',
+    fullName: 'TSM',
+    aliases: ['team solomid', 'solomid'],
+    founded: 2009,
+    country: 'Estados Unidos',
+    region: 'Américas',
+    colors: [
+      { name: 'Branco', hex: '#FFFFFF' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [
+      { year: 2015, name: 'PGL CS:GO Season 1' },
+      { year: 2015, name: 'Vice-campeã da DreamHack Londres' }
+    ],
+    history: 'A TSM nasceu em 2009 como Team SoloMid, uma das primeiras grandes organizações de League of Legends. No Counter-Strike, teve uma passagem curta e marcante em 2015, com o elenco dinamarquês de karrigan, device, dupreeh, Xyp9x e cajunb. No começo de 2016 esses jogadores saíram para fundar a própria organização: a Astralis.',
+    logoDesign: 'A logo é um monograma: as letras “S” e “M” desenhadas em linhas retas e paralelas dentro de um círculo, formando também o “T” de TSM. É um símbolo de uma cor só, que funciona igual em fundo claro ou escuro.',
+    logos: [
+      { years: '2015', src: 'assets/tsm-2015.webp', w: 640, h: 640,
+        caption: 'O monograma circular da TSM, usado pelo elenco dinamarquês que depois fundou a Astralis.' }
     ]
   },
   {
