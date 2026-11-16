@@ -175,6 +175,36 @@ window.TEAMS = [
         caption: 'O mesmo samurai, agora branco e chapado, com contorno preto e olhos vermelhos.' }
     ]
   },
+{
+    slug: 'heroic',
+    name: 'Heroic',
+    fullName: 'Heroic',
+    aliases: ['heroic'],
+    founded: 2016,
+    country: 'Dinamarca',
+    region: 'Europa',
+    colors: [
+      { name: 'Vermelho', hex: '#F80000' },
+      { name: 'Branco', hex: '#FFFFFF' },
+      { name: 'Verde clássico', hex: '#086838' }
+    ],
+    titles: [
+      { year: 2022, name: 'Vice-campeã do Major IEM Rio' },
+      { year: 2021, name: 'ESL Pro League (temporada 13)' }
+    ],
+    history: 'Criada em agosto de 2016, quando um grupo de jogadores dinamarqueses voltou a se reunir, a Heroic virou uma das principais forças da Dinamarca no CS:GO. Venceu a ESL Pro League em 2021 com uma virada histórica sobre a Gambit e, em 2022, chegou pela primeira vez à final de um Major, no IEM Rio, perdendo para a Outsiders. Hoje a organização tem controle norueguês e compete em vários jogos.',
+    logoDesign: 'A Heroic começou com um mascote ilustrado de cavaleiro sobre um brasão com o nome. Nos anos seguintes o cavaleiro virou uma silhueta de elmo em verde e, em 2019, a marca trocou o verde pelo vermelho e branco e passou a usar um “H” com asas. Desde 2023 o “H” fica dentro de um escudo, com contorno vermelho.',
+    logos: [
+      { years: '2016–2017', src: 'assets/heroic-2016.webp', w: 428, h: 390,
+        caption: 'O primeiro emblema: um cavaleiro de elmo ilustrado sobre um brasão com o nome HEROIC.' },
+      { years: '2017–2019', src: 'assets/heroic-2018.webp', w: 532, h: 640,
+        caption: 'O cavaleiro reduzido a uma silhueta de elmo, em verde e branco.' },
+      { years: '2019–2023', src: 'assets/heroic-2019.webp', w: 640, h: 309,
+        caption: 'A troca de cores: um “H” branco com asas e detalhes em vermelho — a logo da final do Major do Rio.' },
+      { years: '2023–atual', src: 'assets/heroic-2023.webp', w: 640, h: 564,
+        caption: 'O “H” agora dentro de um escudo em forma de V, com contorno vermelho.' }
+    ]
+  },
   {
     slug: 'imperial',
     name: 'Imperial',
@@ -396,6 +426,30 @@ window.TEAMS = [
         caption: 'O dragão ilustrado com detalhes em verde, segurando o nome “TEAM SPIRIT”.' },
       { years: '2021–atual', src: 'assets/spirit-2021.webp', w: 549, h: 640,
         caption: 'A silhueta branca e minimalista do dragão, levemente refinada em 2022. É a logo do título no Major de Xangai 2024.' }
+    ]
+  },
+{
+    slug: 'mongolz',
+    name: 'The MongolZ',
+    fullName: 'The MongolZ',
+    aliases: ['mongolz', 'mongols'],
+    founded: 2013,
+    country: 'Mongólia',
+    region: 'Ásia',
+    colors: [
+      { name: 'Dourado', hex: '#E8B850' },
+      { name: 'Dourado claro', hex: '#F8D888' },
+      { name: 'Preto', hex: '#000000' }
+    ],
+    titles: [
+      { year: 2025, name: 'Esports World Cup' },
+      { year: 2025, name: 'Vice-campeã do Major de Austin' }
+    ],
+    history: 'Fundada em agosto de 2013 na Mongólia, começou no Dota 2 e montou seu primeiro time de Counter-Strike em 2015. A versão atual surgiu em 2023 e levou o CS mongol ao topo do mundo: em 2025 a equipe foi a primeira asiática a chegar à final de um Major, em Austin, e conquistou a Esports World Cup, em Riad, sem perder um mapa na decisão contra a Aurora.',
+    logoDesign: 'O símbolo é o rosto de um guerreiro mongol com elmo pontiagudo e bigode, dentro de um círculo — uma referência direta à história militar do país. A versão dourada atual ganhou traços mais grossos em 2024, para funcionar melhor em uniformes e stickers.',
+    logos: [
+      { years: '2023–atual', src: 'assets/mongolz-2023.webp', w: 496, h: 640,
+        caption: 'O guerreiro mongol dourado dentro de um círculo, logo da equipe que chegou à final do Major de Austin.' }
     ]
   },
   {

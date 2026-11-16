@@ -178,6 +178,14 @@ async function noHorizontalScroll(page) {
       const opts = await page.$$eval('.quiz-option', (b) => b.map((x) => x.dataset.slug));
       check(opts.length === 4 && new Set(opts).size === 4, `rodada ${r + 1}: 4 opções distintas`);
       check((await brokenImages(page)).length === 0, `rodada ${r + 1}: imagem carregou`);
+      const inside = await page.evaluate(() => {
+        const st = document.querySelector('.quiz-stage').getBoundingClientRect();
+        const im = document.querySelector('.quiz-stage img');
+        if (!im) return true;
+        const r = im.getBoundingClientRect();
+        return r.top >= st.top - 1 && r.bottom <= st.bottom + 1 && r.left >= st.left - 1 && r.right <= st.right + 1;
+      });
+      check(inside, `rodada ${r + 1}: logo cabe no quadro`);
       await page.click('.quiz-option >> nth=0');
       check((await page.$$('.quiz-option.is-correct')).length === 1, `rodada ${r + 1}: exatamente 1 correta marcada`);
       await page.click('.quiz-next');
