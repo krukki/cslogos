@@ -72,8 +72,8 @@
     if (logos.length < 2) return '';
     return section('h-compare', 'Antes e depois',
       '<div class="compare">' +
-        '<div class="compare-pane compare-before">' + CS.logoImg(team, first) + '</div>' +
-        '<div class="compare-pane compare-after">' + CS.logoImg(team, last) + '</div>' +
+        '<div class="compare-pane compare-before' + (first.light ? ' is-light' : '') + '">' + CS.logoImg(team, first) + '</div>' +
+        '<div class="compare-pane compare-after' + (last.light ? ' is-light' : '') + '">' + CS.logoImg(team, last) + '</div>' +
         '<div class="compare-handle" aria-hidden="true"></div>' +
         '<input class="compare-range" type="range" min="0" max="100" value="50"' +
           ' aria-label="Arraste para comparar a logo de ' + esc(first.years) + ' com a de ' + esc(last.years) + '">' +
@@ -84,7 +84,7 @@
   function titles() {
     var list = team.titles || [];
     if (!list.length) return '';
-    return section('h-titulos', 'Títulos',
+    return section('h-titulos', 'Títulos e campanhas',
       '<ul class="titles">' + list.map(function (t) {
         return '<li class="title-item">' +
           '<span class="title-year">' + esc(t.year) + '</span>' +

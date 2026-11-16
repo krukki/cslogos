@@ -25,9 +25,9 @@ sem build, GitHub Pages) e reescrever HTML/CSS e os templates em `js/*.js`. Troc
 
 ## Design
 - **Fontes:** Bricolage Grotesque (títulos, 600/800) + Inter (texto), Google Fonts.
-- **Tokens (claro):** fundo `#F3EFE6`, tinta `#141414`, papel `#FFFFFF`, destaque amarelo `#FFF07A`,
-  holográfico em gradiente cônico (rosa→lilás→azul→verde→amarelo). **Escuro:** fundo `#121212`,
-  papel `#1D1D1D`, borda/sombra `#F3EFE6`, mesmo amarelo. Tudo via variáveis CSS em `:root` e
+- **Tokens (claro):** fundo `#F1ECDF` com pontilhado, tinta `#151515`, papel `#FFFFFF`, destaque `#FFE45C`,
+  holográfico em gradiente cônico (rosa→lilás→azul→verde→amarelo). **Escuro:** fundo `#17161A`,
+  papel `#24232A`, borda/sombra `#F1ECDF`, mesmo amarelo. (Ajustados na implementação para contraste AA.) Tudo via variáveis CSS em `:root` e
   `[data-theme]`.
 - **Adesivo de logo:** círculo com fundo escuro fixo (logos claras e escuras ficam legíveis nos dois
   temas), anel branco e contorno de tinta. Logos pretas (FURIA etc.) recebem anel claro e fundo cinza

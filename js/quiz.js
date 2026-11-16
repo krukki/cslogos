@@ -106,7 +106,7 @@
         '<p>' + (isRecord ? 'Novo recorde!' : 'Seu recorde: ' + Math.max(record, score) + '/' + total) + '</p>' +
         '<div class="actions">' +
           '<button type="button" class="btn btn--accent quiz-restart">Jogar de novo</button>' +
-          '<a class="btn" href="index.html#teams">Ver os times</a>' +
+          '<a class="btn" href="index.html#times">Ver os times</a>' +
         '</div>' +
       '</section>';
     var restart = root.querySelector('.quiz-restart');

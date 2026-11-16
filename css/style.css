@@ -113,7 +113,7 @@ button { font: inherit; color: inherit; }
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 max(1.25rem, env(safe-area-inset-right)) 0 max(1.25rem, env(safe-area-inset-left));
 }
 
 /* ==========================================================
@@ -201,6 +201,9 @@ button { font: inherit; color: inherit; }
 .icon-sun { display: none; }
 :root[data-theme="dark"] .icon-sun { display: block; }
 :root[data-theme="dark"] .icon-moon { display: none; }
+.when-dark { display: none; }
+:root[data-theme="dark"] .when-dark { display: inline; }
+:root[data-theme="dark"] .when-light { display: none; }
 
 .header-theme { display: none; }
 
@@ -212,7 +215,7 @@ button { font: inherit; color: inherit; }
   z-index: 40;
   background: var(--card);
   border-top: var(--line) solid var(--ink);
-  padding-bottom: env(safe-area-inset-bottom);
+  padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 .bottom-nav ul {
@@ -252,11 +255,13 @@ button { font: inherit; color: inherit; }
 .bottom-nav [aria-current="page"] .icon-wrap { background: var(--accent); color: var(--on-accent); }
 
 body { padding-bottom: calc(var(--nav-h) + var(--line) + 16px + env(safe-area-inset-bottom)); }
+html { scroll-padding-bottom: calc(var(--nav-h) + var(--line) + 16px + env(safe-area-inset-bottom)); }
 
 @media (min-width: 900px) {
   .top-nav, .header-theme { display: inline-flex; }
   .bottom-nav { display: none; }
   body { padding-bottom: 0; }
+  html { scroll-padding-bottom: 0; }
 }
 
 /* ==========================================================
@@ -342,6 +347,8 @@ body { padding-bottom: calc(var(--nav-h) + var(--line) + 16px + env(safe-area-in
   max-width: 36ch;
   opacity: 0.82;
 }
+
+.hero :focus-visible { outline-color: var(--accent); }
 
 .hero .btn { border-color: var(--bg); box-shadow: none; }
 .hero .btn:hover { box-shadow: 4px 4px 0 var(--accent); }
@@ -546,6 +553,9 @@ body { padding-bottom: calc(var(--nav-h) + var(--line) + 16px + env(safe-area-in
 
 .sticker--light { background: var(--plate-light); }
 
+/* logos pretas pintadas de branco (campo invert) */
+.logo--invert { filter: brightness(0) invert(1); }
+
 .sticker img {
   width: 66%;
   height: 66%;
@@ -729,7 +739,10 @@ body { padding-bottom: calc(var(--nav-h) + var(--line) + 16px + env(safe-area-in
   touch-action: pan-y;
 }
 
-@media (min-width: 720px) { .compare { aspect-ratio: 16 / 8; max-width: 760px; } }
+@media (min-width: 720px) {
+  .compare { aspect-ratio: 16 / 8; max-width: 760px; }
+  .compare-labels { max-width: 760px; }
+}
 
 .compare-pane {
   position: absolute;
@@ -751,6 +764,8 @@ body { padding-bottom: calc(var(--nav-h) + var(--line) + 16px + env(safe-area-in
 
 .compare-before { background: var(--plate); }
 .compare-after { background: #2B2A31; clip-path: inset(0 0 0 var(--pos)); }
+.compare-before.is-light { background: var(--plate-light); }
+.compare-after.is-light { background: #E4E0D6; }
 
 .compare-handle {
   position: absolute;

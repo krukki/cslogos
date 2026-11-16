@@ -27,9 +27,6 @@
     for (var i = 0; i < buttons.length; i++) {
       var b = buttons[i];
       b.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-      b.setAttribute('aria-label', theme === 'dark' ? 'Usar tema claro' : 'Usar tema escuro');
-      var label = b.querySelector('.theme-label');
-      if (label) label.textContent = theme === 'dark' ? 'Claro' : 'Escuro';
     }
   }
 
