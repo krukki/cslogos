@@ -3,24 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CS LOGOS</title>
-  <link rel="icon" type="image/png" href="cs2.png">
+  <title>CS LOGOS — a história das logos do Counter-Strike</title>
+  <meta name="description" content="Arquivo não oficial da identidade visual do Counter-Strike competitivo: a evolução das logos de NAVI, Vitality, FURIA, MIBR, FaZe e outros times lendários.">
+  <meta name="theme-color" content="#0a0b0e">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CS LOGOS">
+  <meta property="og:title" content="CS LOGOS — a história das logos do Counter-Strike">
+  <meta property="og:description" content="A evolução das logos dos maiores times de Counter-Strike, do 1.6 ao CS2.">
+  <meta property="og:image" content="https://krukki.github.io/cslogos/assets/og-image.png">
+  <meta property="og:url" content="https://krukki.github.io/cslogos/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/cs2.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-
+<body id="top">
+  <a class="skip-link" href="#teams">Pular para os times</a>
   <div class="scan-overlay" aria-hidden="true"></div>
 
-  <nav class="navbar">
-    <div class="brand">
-      <h2>CS<span>LOGOS</span></h2>
-    </div>
+  <nav class="navbar" aria-label="Principal">
+    <a class="brand" href="index.html">CS<span>LOGOS</span></a>
     <ul class="nav-links">
-      <li><a href="index.html">01 · Início</a></li>
-      <li><a href="#teams">02 · Times</a></li>
+      <li><a href="#top" aria-current="page"><span class="nav-num">01 · </span>Início</a></li>
+      <li><a href="#teams"><span class="nav-num">02 · </span>Times</a></li>
+      <li><a href="quiz.html"><span class="nav-num">03 · </span>Quiz</a></li>
     </ul>
   </nav>
 
@@ -32,80 +40,54 @@
       As logos do Counter-Strike representam Majors icônicos, elencos lendários e eras marcantes
       de jogadores. Explore o design e a identidade visual por trás das maiores organizações do jogo.
     </p>
-    <div class="hero-rule" aria-hidden="true"></div>
+    <div class="hero-actions">
+      <a class="btn btn--primary" href="#teams">Explorar os times</a>
+      <a class="btn" href="quiz.html">Jogar o quiz</a>
+    </div>
+    <div class="hero-rule" aria-hidden="true"><span></span></div>
   </header>
 
-  <main>
-    <section class="teams-section" id="teams">
+  <main class="page-main">
+    <section class="teams-section" id="teams" aria-labelledby="teams-title">
       <div class="section-head">
-        
-        <h2>Times</h2>
+        <h2 id="teams-title">Times</h2>
+        <p class="result-count" id="result-count" aria-live="polite"></p>
       </div>
 
-      <div class="team-grid">
-        <!-- NAVI Card -->
-        <a href="pages/navi.html" class="team-card" data-side="T">
-          <div class="team-logo-wrap">
-            <img src="assets/navinow.png" alt="NAVI 364663 Logo" class="team-logo">
-          </div>
-          <h3>NAVI</h3>
-        </a>
-        <!-- Astralis Card -->
-        <a href="pages/astralis.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/astralis.png" alt="Astralis Logo" class="team-logo">
-          </div>
-          <h3>Astralis</h3>
-        </a>
-
-
-
-        <a href="pages/sk.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/sknow.png" alt="SK Gaming Logo" class="team-logo1">
-          </div>
-          <h3>SK Gaming</h3>
-        </a>
-        <a href="pages/fnatic.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/fnaticnow.webp" alt="Fnatic Logo" class="team-logo">
-          </div>
-          <h3>Fnatic</h3>
-        </a>
-        </a>
-        <a href="pages/mouz.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/mouznew.png" alt="Mouz Logo" class="team-logo">
-          </div>
-          <h3>MOUZ</h3>
-        </a>
-        <a href="pages/faze.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/fazenow.webp" alt="FaZe Logo" class="team-logo">
-          </div>
-          <h3>FaZe</h3>
-        </a>
-        <a href="pages/nip.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/nipnow.png" alt="NIP Logo" class="team-logo">
-          </div>
-          <h3>NIP</h3>
-        </a>
-        <a href="pages/mibr.html" class="team-card" data-side="CT">
-          <div class="team-logo-wrap">
-            <img src="assets/mibrnow.png" alt="mibr Logo" class="team-logo1">
-          </div>
-          <h3>MIBR</h3>
-        </a>
-
-        <!-- Repeat structure for SK Gaming, Fnatic, NiP, VP, C9, Liquid, FaZe, iBUYPOWER -->
+      <div class="team-tools">
+        <label class="search-field">
+          <span class="visually-hidden">Buscar time</span>
+          <input type="search" id="team-search" placeholder="Buscar time…" autocomplete="off" spellcheck="false">
+        </label>
+        <ul class="chips" aria-label="Filtrar por região">
+          <li><button type="button" class="chip" data-region-filter="all" aria-pressed="true">Todas</button></li>
+          <li><button type="button" class="chip" data-region-filter="Europa" aria-pressed="false">Europa</button></li>
+          <li><button type="button" class="chip" data-region-filter="Leste Europeu" aria-pressed="false">Leste Europeu</button></li>
+          <li><button type="button" class="chip" data-region-filter="Brasil" aria-pressed="false">Brasil</button></li>
+          <li><button type="button" class="chip" data-region-filter="América do Norte" aria-pressed="false">América do Norte</button></li>
+        </ul>
       </div>
+
+      <div class="team-grid" id="team-grid"></div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <p>Nenhum time encontrado.</p>
+        <button type="button" class="btn" id="clear-filters">Limpar busca e filtros</button>
+      </div>
+
+      <noscript>
+        <p class="noscript-note">Ative o JavaScript para ver a lista de times.</p>
+      </noscript>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>CS LOGOS — arquivo não oficial de identidade visual competitiva.</p>
+    <p>CS LOGOS — arquivo não oficial de identidade visual competitiva.<br>
+      Logos são marcas de suas respectivas organizações. Imagens via <a href="https://liquipedia.net/counterstrike/" rel="noopener">Liquipedia</a>.</p>
   </footer>
 
+  <script src="js/teams.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

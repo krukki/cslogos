@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0b0e">
+  <link rel="icon" type="image/png" href="assets/cs2.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Quiz: adivinhe a logo — CS LOGOS</title>
+  <meta name="description" content="Teste seus conhecimentos: reconheça logos antigas e atuais dos times de Counter-Strike em 10 rodadas.">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="scan-overlay" aria-hidden="true"></div>
+
+  <nav class="navbar" aria-label="Principal">
+    <a class="brand" href="index.html">CS<span>LOGOS</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-num">01 · </span>Início</a></li>
+      <li><a href="index.html#teams"><span class="nav-num">02 · </span>Times</a></li>
+      <li><a href="quiz.html" aria-current="page"><span class="nav-num">03 · </span>Quiz</a></li>
+    </ul>
+  </nav>
+
+  <main class="quiz-main" id="conteudo">
+    <header class="quiz-head">
+      <p class="eyebrow">// minijogo</p>
+      <h1>Adivinhe a <span class="hero-accent">logo</span></h1>
+      <p>10 rodadas. Uma logo por vez — muitas delas aposentadas há anos. De qual time ela é?</p>
+    </header>
+    <div id="quiz-root">
+      <noscript><p class="noscript-note">Ative o JavaScript para jogar.</p></noscript>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>CS LOGOS — arquivo não oficial de identidade visual competitiva.<br>
+      Logos são marcas de suas respectivas organizações. Imagens via <a href="https://liquipedia.net/counterstrike/" rel="noopener">Liquipedia</a>.</p>
+  </footer>
+
+  <script src="js/teams.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
