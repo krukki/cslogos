@@ -32,12 +32,6 @@
     return team.logos[team.logos.length - 1];
   }
 
-  function corners() {
-    return ['tl', 'tr', 'bl', 'br'].map(function (p) {
-      return '<span class="corner corner-' + p + '" aria-hidden="true"></span>';
-    }).join('');
-  }
-
   function defaultAlt(team, logo) {
     return 'Logo da ' + team.name + ' (' + logo.years + ')';
   }
@@ -59,6 +53,18 @@
       (opts.eager ? '' : ' loading="lazy"') +
       ' decoding="async"' +
       (cls ? ' class="' + cls + '"' : '') + '>';
+  }
+
+  /** Adesivo redondo com a logo. Logos marcadas com `light: true` usam fundo claro. */
+  function sticker(team, logo, opts) {
+    opts = opts || {};
+    return '<span class="sticker' + (logo.light ? ' sticker--light' : '') + (opts.cls ? ' ' + opts.cls : '') + '">' +
+      logoImg(team, logo, { alt: opts.alt, eager: opts.eager }) + '</span>';
+  }
+
+  /** Quantidade de Majors vencidos (títulos com major: true). */
+  function majorCount(team) {
+    return (team.titles || []).filter(function (t) { return t.major; }).length;
   }
 
   function teamUrl(team) {
@@ -91,8 +97,9 @@
     norm: norm,
     findTeam: findTeam,
     currentLogo: currentLogo,
-    corners: corners,
     logoImg: logoImg,
+    sticker: sticker,
+    majorCount: majorCount,
     teamUrl: teamUrl,
     shuffle: shuffle,
     store: store

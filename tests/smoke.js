@@ -52,13 +52,15 @@ async function noHorizontalScroll(page) {
   TEAMS.forEach((t) => {
     check(!slugs.has(t.slug), `slug único: ${t.slug}`);
     slugs.add(t.slug);
-    check(['Europa', 'Leste Europeu', 'Brasil', 'América do Norte'].includes(t.region), `${t.slug}: região válida (${t.region})`);
+    check(['Europa', 'Leste Europeu', 'Brasil', 'Américas', 'Ásia'].includes(t.region), `${t.slug}: região válida (${t.region})`);
     check(t.logos.length >= 1, `${t.slug}: tem logos`);
     t.logos.forEach((l) => {
       if (l.src) check(fs.existsSync(path.join(ROOT, l.src)), `${t.slug}: arquivo existe ${l.src}`);
       check(!!l.caption, `${t.slug}: legenda em ${l.years}`);
     });
     t.colors.forEach((c) => check(/^#[0-9A-F]{6}$/.test(c.hex), `${t.slug}: hex válido ${c.hex}`));
+    check(Array.isArray(t.titles), `${t.slug}: tem lista de títulos`);
+    check(t.logos.every((l) => !('opinion' in l)), `${t.slug}: sem opinião do autor`);
   });
 
   // ---------- home ----------
@@ -90,6 +92,12 @@ async function noHorizontalScroll(page) {
     const br = TEAMS.filter((t) => t.region === 'Brasil').length;
     check((await page.$$('.team-card:visible')).length === br, `chip Brasil → ${br} cards`);
     check((await page.textContent('#result-count')).includes(String(br)), 'contador atualiza');
+    const featHref = await page.getAttribute('#featured', 'href');
+    check(TEAMS.some((t) => featHref === `team.html?t=${t.slug}`), 'adesivo sorteado aponta para um time existente');
+    check(await page.$eval('#featured img', (i) => i.complete && i.naturalWidth > 0), 'logo sorteada carregou');
+    await page.click('[data-region-filter="Ásia"]');
+    const asia = TEAMS.filter((t) => t.region === 'Ásia').length;
+    check((await page.$$('.team-card:visible')).length === asia, `chip Ásia → ${asia} cards`);
     check(errors.length === 0, 'home sem erros no console ' + errors.join(' | '));
     await page.close();
   }
@@ -99,9 +107,15 @@ async function noHorizontalScroll(page) {
   for (let i = 0; i < TEAMS.length; i++) {
     const t = TEAMS[i];
     const { page, errors } = await openPage(browser, `team.html?t=${t.slug}`);
-    check((await page.textContent('h1')).trim() === t.fullName, `${t.slug}: h1 = ${t.fullName}`);
+    check((await page.textContent('#team-root h1')).trim() === t.fullName, `${t.slug}: h1 = ${t.fullName}`);
     check((await page.title()).includes(t.name), `${t.slug}: <title> tem o nome`);
-    check((await page.$$('.timeline-item')).length === t.logos.length, `${t.slug}: ${t.logos.length} itens na linha do tempo`);
+    check((await page.$$('.logo-timeline > li')).length === t.logos.length, `${t.slug}: ${t.logos.length} itens na linha do tempo`);
+    check((await page.$$('.title-item')).length === t.titles.length, `${t.slug}: ${t.titles.length} títulos`);
+    check(!!(await page.$('#h-titulos')) === (t.titles.length > 0), `${t.slug}: seção de títulos só quando há títulos`);
+    check((await page.$$('.opinion')).length === 0, `${t.slug}: sem "Opinião do autor"`);
+    const order = await page.$$eval('.team-section > h2', (hs) => hs.map((h) => h.id));
+    const expected = ['h-logos'].concat(t.logos.length >= 2 ? ['h-compare'] : [], t.titles.length ? ['h-titulos'] : [], ['h-cores', 'h-historia', 'h-design']);
+    check(JSON.stringify(order) === JSON.stringify(expected), `${t.slug}: ordem das seções (logos primeiro)`);
     check((await page.$$('.swatch')).length === t.colors.length, `${t.slug}: ${t.colors.length} amostras de cor`);
     check(!!(await page.$('.compare')) === (t.logos.length >= 2), `${t.slug}: comparador só com 2+ logos`);
     check((await brokenImages(page)).length === 0, `${t.slug}: sem imagens quebradas`);
@@ -137,7 +151,7 @@ async function noHorizontalScroll(page) {
   // ---------- slug inválido ----------
   {
     const { page, errors } = await openPage(browser, 'team.html?t=%20NAVI%20');
-    check((await page.textContent('h1')).trim() === 'Natus Vincere' && errors.length === 0, 'slug com maiúsculas/espaços funciona');
+    check((await page.textContent('#team-root h1')).trim() === 'Natus Vincere' && errors.length === 0, 'slug com maiúsculas/espaços funciona');
     await page.close();
   }
   for (const q of ['team.html?t=nao-existe', 'team.html']) {
@@ -192,7 +206,40 @@ async function noHorizontalScroll(page) {
   // ---------- 404 ----------
   {
     const { page, errors } = await openPage(browser, '404.html');
-    check((await page.textContent('h1')).includes('não encontrada') && errors.length === 0, '404 renderiza');
+    check((await page.textContent('h1')).includes('adesivo') && errors.length === 0, '404 renderiza');
+    await page.close();
+  }
+
+  // ---------- tema claro/escuro ----------
+  console.log('tema');
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: 'dark' });
+    const page = await ctx.newPage();
+    await page.goto(url('index.html'));
+    check((await page.getAttribute('html', 'data-theme')) === 'dark', 'primeira visita segue o sistema (escuro)');
+    await page.click('.bottom-nav [data-theme-toggle]');
+    check((await page.getAttribute('html', 'data-theme')) === 'light', 'botão troca para claro');
+    await page.goto(url('team.html?t=navi'));
+    check((await page.getAttribute('html', 'data-theme')) === 'light', 'escolha é lembrada em outra página');
+    await ctx.close();
+  }
+
+  // ---------- celular: barra inferior e alvos de toque ----------
+  console.log('alvos de toque');
+  for (const p of ['index.html', `team.html?t=${TEAMS[0].slug}`, 'quiz.html']) {
+    const { page } = await openPage(browser, p, { width: 390, height: 844 });
+    check(await page.isVisible('.bottom-nav'), `${p}: barra inferior visível no celular`);
+    const small = await page.$$eval('.bottom-nav a, .bottom-nav button, .chip, .quiz-option, .swatch, .btn, .pager-link, .back-link, #team-search',
+      (els) => els.filter((e) => e.offsetParent !== null && e.getBoundingClientRect().height < 48).map((e) => e.className || e.id));
+    check(small.length === 0, `${p}: alvos de toque com 48px ou mais ` + small.join(','));
+    const navH = await page.$eval('.bottom-nav', (n) => n.getBoundingClientRect().height);
+    const pad = await page.$eval('body', (b) => parseFloat(getComputedStyle(b).paddingBottom));
+    check(pad >= navH - 1, `${p}: conteúdo não fica escondido atrás da barra`);
+    await page.close();
+  }
+  {
+    const { page } = await openPage(browser, 'index.html', { width: 1280, height: 900 });
+    check(!(await page.isVisible('.bottom-nav')) && (await page.isVisible('.top-nav')), 'desktop: menu no topo, sem barra inferior');
     await page.close();
   }
 

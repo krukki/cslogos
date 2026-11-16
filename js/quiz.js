@@ -50,7 +50,7 @@
       '<div class="quiz-hud"><span>Rodada <strong>' + (round + 1) + '</strong> / ' + total + '</span>' +
         '<span>Acertos <strong class="quiz-points">' + score + '</strong></span></div>' +
       '<div class="quiz-progress" aria-hidden="true"><span style="width:' + (round / total * 100) + '%"></span></div>' +
-      '<div class="quiz-stage">' + CS.logoImg(q.team, q.logo, { eager: true, alt: 'Logo misteriosa da rodada ' + (round + 1) }) + '</div>' +
+      '<div class="quiz-stage' + (q.logo.light ? ' quiz-stage--light' : '') + '">' + CS.logoImg(q.team, q.logo, { eager: true, alt: 'Logo misteriosa da rodada ' + (round + 1) }) + '</div>' +
       '<ul class="quiz-options">' + q.options.map(function (t) {
         return '<li><button type="button" class="quiz-option" data-slug="' + esc(t.slug) + '">' + esc(t.name) + '</button></li>';
       }).join('') + '</ul>' +
@@ -80,7 +80,7 @@
     fb.innerHTML =
       '<p class="' + (right ? 'ok' : 'bad') + '">' + (right ? 'Certo! ' : 'Errou! ') +
         'Essa é a logo da <strong>' + esc(q.team.name) + '</strong> (' + esc(q.logo.years) + ').</p>' +
-      '<button type="button" class="btn btn--primary quiz-next">' + (last ? 'Ver resultado' : 'Próxima →') + '</button>';
+      '<button type="button" class="btn btn--accent quiz-next">' + (last ? 'Ver resultado' : 'Próxima rodada') + '</button>';
     var next = fb.querySelector('.quiz-next');
     next.addEventListener('click', function () {
       round++;
@@ -100,12 +100,12 @@
       : 'Hora de estudar o arquivo de logos!';
     root.innerHTML =
       '<section class="quiz-result">' +
-        '<p class="eyebrow">// fim de jogo</p>' +
+        
         '<p class="quiz-score">' + score + '/' + total + '</p>' +
         '<p>' + msg + '</p>' +
         '<p>' + (isRecord ? 'Novo recorde!' : 'Seu recorde: ' + Math.max(record, score) + '/' + total) + '</p>' +
-        '<div class="hero-actions">' +
-          '<button type="button" class="btn btn--primary quiz-restart">Jogar de novo</button>' +
+        '<div class="actions">' +
+          '<button type="button" class="btn btn--accent quiz-restart">Jogar de novo</button>' +
           '<a class="btn" href="index.html#teams">Ver os times</a>' +
         '</div>' +
       '</section>';
